@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+      		<file value="${TMP}\RocketBusWeb.log"/>
+      		<appendToFile value="true"/>
+      		<rollingStyle value="Size"/>
+      		<maxSizeRollBackups value="10"/>
+      		<maximumFileSize value="1MB"/>
+      		<staticLogFileName value="true"/>
+      		<layout type="log4net.Layout.PatternLayout">
+        		<param name="ConversionPattern" value="%d|%t|%-5p|%c|%m%n"/>
+      		</layout>
+    	</appender>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
